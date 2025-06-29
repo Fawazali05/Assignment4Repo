@@ -20,16 +20,16 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: e-commerce-admin
+        working-directory: ${{ vars.PROJECT_FOLDER }}
 
       - name: Build project
         run: npm run build
-        working-directory: e-commerce-admin
+        working-directory: ${{ vars.PROJECT_FOLDER }}
 
       - name: Archive build output
         run: |
           mkdir output
-          cp -r e-commerce-admin/build/* output/
+          cp -r ${{ vars.PROJECT_FOLDER }}/build/* output/
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
