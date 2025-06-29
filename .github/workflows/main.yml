@@ -1,3 +1,10 @@
+name: Build and Upload Node Package
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,9 +29,9 @@ jobs:
       - name: Archive build output
         run: |
           mkdir output
-          cp -r e-commerce-admin/dist/* output/
-        
-      - name: Upload artifact
+          cp -r e-commerce-admin/build/* output/
+
+      - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: my-package
